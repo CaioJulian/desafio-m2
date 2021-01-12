@@ -1,32 +1,38 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+      <h4 class="text-center pt-4">Operadora Brasil</h4>
     </div>
-    <router-view/>
+    <router-view />
   </div>
 </template>
 
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+@import "bootstrap";
+
+$new-color: purple;
+
+.text-primary {
+  color: $new-color !important;
 }
-
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+.btn-primary {
+  @include button-variant(
+    $new-color,
+    darken($new-color, 7.5%),
+    darken($new-color, 10%),
+    lighten($new-color, 5%),
+    lighten($new-color, 10%),
+    darken($new-color, 30%)
+  );
+}
+a.btn.btn-white.active-selected {
+  background-color: $new-color;
+  color: #ffff;
+}
+a.btn.btn-white.active-selected:hover {
+  color: #ffff;
+}
+a.text-muted.small.active-selected {
+  color: #ffff !important;
 }
 </style>
