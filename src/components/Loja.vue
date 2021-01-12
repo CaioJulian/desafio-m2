@@ -58,10 +58,21 @@
       </b-col>
     </b-row>
 
-    <b-row class="col-12 ml-0 pt-2">
-      <b-button variant="primary" class="px-4" :disabled="isDisabled"
-        >Confirmar</b-button
-      >
+    <b-row class="col-12 pt-2">
+      <b-col cols="6">
+        <b-button class="px-4" @click="limparCarrinho"
+          >Limpar Carrinho</b-button
+        >
+      </b-col>
+      <b-col cols="6 text-right">
+        <b-button
+          variant="primary"
+          class="px-4"
+          :disabled="isDisabled"
+          @click="confirmarSolicitacao"
+          >Confirmar</b-button
+        >
+      </b-col>
     </b-row>
   </b-row>
 </template>
@@ -71,6 +82,9 @@ import NewCard from "./NewCard.vue";
 export default {
   components: { NewCard },
   name: "Compras",
+  created() {
+    this.$store.dispatch("getLists");
+  },
   computed: {
     list_net() {
       return this.$store.state.list_net;
@@ -96,8 +110,11 @@ export default {
   methods: {
     limparCarrinho() {
       this.$store.dispatch("resetStateAll");
-
       this.$store.commit("resetItems");
+    },
+    confirmarSolicitacao() {
+      alert("Solicitação\nConfirmar solicitação de compra?");
+      this.limparCarrinho();
     },
   },
 };
