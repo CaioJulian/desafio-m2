@@ -1,3 +1,4 @@
+import axios from 'axios'
 import Vue from 'vue'
 import Vuex from 'vuex'
 import carrinho from './modules/carrinho'
@@ -6,48 +7,9 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    list_net: [
-      {
-        id: 1,
-        title: "100MB",
-        price: 99.99,
-        state: false
-      },
-      {
-        id: 2,
-        title: "200MB",
-        price: 119.99,
-        state: false
-      },
-      {
-        id: 3,
-        title: "300MB",
-        price: 129.99,
-        state: false
-      },
-    ],
-    list_tv: [
-      {
-        id: 1,
-        title: "Ultimate HD",
-        price: 139.99,
-        state: false
-      },
-      {
-        id: 2,
-        title: "Full HD",
-        price: 214.99,
-        state: false
-      },
-    ],
-    list_fixo: [
-      {
-        id: 1,
-        title: "Ilimitado Fixo Brasil",
-        price: 49.99,
-        state: false
-      },
-    ],
+    list_net: [],
+    list_tv: [],
+    list_fixo: [],
   },
   getters: {
     disabledList(state) {
@@ -72,6 +34,16 @@ export default new Vuex.Store({
       lists.forEach(list => {
         commit('resetState', list);
       });
+    },
+
+    getLists({ state }) {
+      axios.get(`https://my-json-server.typicode.com/CaioJulian/desafio-m2/products`)
+        .then(response => {
+          let lists = response.data;
+          state.list_net = lists.list_net;
+          state.list_tv = lists.list_tv;
+          state.list_fixo = lists.list_fixo;
+        })
     }
   },
   modules: {
