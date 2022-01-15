@@ -1,17 +1,17 @@
 <template>
   <b-container>
-    <Loja />
+    <Store />
   </b-container>
 </template>
 
 <script>
 // @ is an alias to /src
-import Loja from "@/components/Loja.vue";
+import Store from "@/components/Store.vue";
 
 export default {
   name: "Home",
   components: {
-    Loja,
+    Store,
   },
 };
 </script>
