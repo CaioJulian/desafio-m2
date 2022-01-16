@@ -32,9 +32,7 @@
 
     <b-row class="col-12 pt-2">
       <b-col cols="6">
-        <b-button class="px-4" @click="cleanCart"
-          >Limpar Carrinho</b-button
-        >
+        <b-button class="px-4" @click="cleanCart">Limpar Carrinho</b-button>
       </b-col>
       <b-col cols="6 text-right">
         <b-button
@@ -50,7 +48,9 @@
 </template>
 
 <script>
+import clean from "@/mixins/clean.js";
 export default {
+  mixins: [clean],
   props: {
     isDisabled: {
       type: Boolean,
@@ -69,10 +69,6 @@ export default {
     confirmSolicitation() {
       alert("Solicitação\nConfirmar solicitação de compra?");
       this.cleanCart();
-    },
-    cleanCart() {
-      this.$store.dispatch("resetStateAll");
-      this.$store.commit("resetItems");
     }
   }
 };

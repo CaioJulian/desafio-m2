@@ -35,8 +35,10 @@
 <script>
 import Cart from "./Cart.vue";
 import NewCard from "./NewCard.vue";
+import clean from "@/mixins/clean.js";
 export default {
   components: { NewCard, Cart },
+  mixins: [clean],
   created() {
     this.$store.dispatch("getLists");
   },
@@ -54,12 +56,6 @@ export default {
       let disabled = this.$store.getters.disabledList;
       if (disabled) this.cleanCart();
       return disabled;
-    }
-  },
-  methods: {
-    cleanCart() {
-      this.$store.dispatch("resetStateAll");
-      this.$store.commit("resetItems");
     }
   }
 };
