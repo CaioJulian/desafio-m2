@@ -1,13 +1,13 @@
 import store from '@/store'
 
-describe('Carrinho.js', () => {
+describe('Cart.js', () => {
 
   test('Getters "total" return 0', () => {
     expect(store.getters.total).toBe(0);
   })
 
   test('Getters "total" return 99.99', () => {
-    store.state.carrinho.items = [{
+    store.state.cart.items = [{
       id: 1,
       title: "100MB",
       price: 99.99,
@@ -17,7 +17,7 @@ describe('Carrinho.js', () => {
   })
 
   test('Mutations "addItem" list add item', () => {
-    store.state.carrinho.items = [];
+    store.state.cart.items = [];
     const item = {
       id: 1,
       title: "100MB",
@@ -25,11 +25,11 @@ describe('Carrinho.js', () => {
       state: true
     };
     store.commit("addItem", item);
-    expect(store.state.carrinho.items[0]).toBe(item);
+    expect(store.state.cart.items[0]).toBe(item);
   })
 
   test('Mutations "rmItem" list remove item', async () => {
-    store.state.carrinho.items = [];
+    store.state.cart.items = [];
     const item = {
       id: 1,
       title: "100MB",
@@ -39,11 +39,11 @@ describe('Carrinho.js', () => {
     await store.commit("addItem", item);
 
     await store.commit("rmItem", item);
-    expect(store.state.carrinho.items).toEqual([]);
+    expect(store.state.cart.items).toEqual([]);
   })
 
   test('Mutations "resetItems" reset list items', async () => {
-    store.state.carrinho.items = [];
+    store.state.cart.items = [];
     const item = {
       id: 1,
       title: "100MB",
@@ -53,11 +53,11 @@ describe('Carrinho.js', () => {
     await store.commit("addItem", item);
 
     await store.commit("resetItems", item);
-    expect(store.state.carrinho.items).toEqual([]);
+    expect(store.state.cart.items).toEqual([]);
   })
 
   test('Actions "checkItem" check item add/rm', async () => {
-    store.state.carrinho.items = [];
+    store.state.cart.items = [];
     const list_net = [{
       id: 1,
       title: "100MB",
@@ -72,6 +72,6 @@ describe('Carrinho.js', () => {
     }];
     await store.dispatch("checkItem", list_net);
 
-    expect(store.state.carrinho.items).toEqual([list_net[0]]);
+    expect(store.state.cart.items).toEqual([list_net[0]]);
   })
 })

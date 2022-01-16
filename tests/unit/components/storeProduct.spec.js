@@ -3,7 +3,7 @@ import Vuex from 'vuex'
 import BootstrapVue from 'bootstrap-vue'
 
 import StoreProduct from '@/components/StoreProduct.vue'
-import carrinho from '@/store/modules/carrinho'
+import cart from '@/store/modules/cart'
 
 const localVue = createLocalVue()
 localVue.use(Vuex)
@@ -23,7 +23,7 @@ describe('StoreProduct.vue', () => {
     store = new Vuex.Store({
       actions,
       modules: {
-        carrinho
+        cart
       }
     })
   })

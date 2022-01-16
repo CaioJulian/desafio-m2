@@ -59,7 +59,7 @@ export default {
   },
   computed: {
     items() {
-      return this.$store.state.carrinho.items;
+      return this.$store.state.cart.items;
     },
     total() {
       return this.$store.getters.total;
