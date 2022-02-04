@@ -6,7 +6,10 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit --watch",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "test": "jest",
+    "test:watch": "jest --watchAll",
+    "test:coverage": "jest --coverage"
   },
   "dependencies": {
     "bootstrap-vue": "^2.17.3",
@@ -70,7 +73,7 @@
   ],
   "jest": {
     "preset": "@vue/cli-plugin-unit-jest",
-    "collectCoverage": true,
+    "collectCoverage": false,
     "collectCoverageFrom": ["**/*.{js,vue}", "!**/node_modules/**"]
   }
 }

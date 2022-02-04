@@ -22,7 +22,7 @@
             <b-link
               class="text-muted small"
               :class="{ 'active-selected': item.state == true }"
-              >+ DETALHES</b-link
+              >+ Detalhes</b-link
             ></b-card-text
           >
         </b-link>
@@ -37,7 +37,7 @@ export default {
     title: String,
     description: String,
     list: Array,
-    disabled: Boolean,
+    disabled: Boolean
   },
   methods: {
     toggleItemState(list, index) {
@@ -47,7 +47,7 @@ export default {
       this.$store.commit("toggleItemState", { list, index });
 
       this.$store.dispatch("checkItem", list);
-    },
-  },
+    }
+  }
 };
 </script>

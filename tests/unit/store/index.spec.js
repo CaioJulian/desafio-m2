@@ -1,5 +1,5 @@
 import store from '@/store'
-import axios from 'axios';
+// import axios from 'axios';
 
 jest.mock('axios');
 
@@ -75,7 +75,8 @@ describe('Index.js', () => {
     expect(store.state.list_fixo[0].state).toBe(false);
   })
 
-  /* test.only('Actions getLists list all', async () => {
+  /* test('Actions getLists list all', async () => {
+    store.state.list_net = [];
     const data = {
       list_net: [{
         id: 1,
@@ -85,10 +86,12 @@ describe('Index.js', () => {
       }]
     }
 
-    axios.get.mockImplementationOnce(() => Promise.resolve(data));
+    //await axios.get.mockImplementationOnce(() => Promise.resolve(data));
+    await axios.get.mockResolvedValue(data);
 
     await store.dispatch("getLists")
     
-    expect(store.state.list_net).toEqual(data);
+    //expect(store.state.list_net).toEqual(data);
+    return store.dispatch("getLists").then(d => expect(d).toEqual(data));
   }) */
 })

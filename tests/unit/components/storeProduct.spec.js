@@ -2,8 +2,8 @@ import { shallowMount, createLocalVue } from '@vue/test-utils'
 import Vuex from 'vuex'
 import BootstrapVue from 'bootstrap-vue'
 
-import Loja from '@/components/Loja.vue'
-import carrinho from '@/store/modules/carrinho'
+import StoreProduct from '@/components/StoreProduct.vue'
+import cart from '@/store/modules/cart'
 
 const localVue = createLocalVue()
 localVue.use(Vuex)
@@ -12,7 +12,7 @@ localVue.filter('formatPrice', (value) => {
   return parseFloat(value).toFixed(2).replace('.', ',')
 })
 
-describe('Loja.vue', () => {
+describe('StoreProduct.vue', () => {
   let actions
   let store
 
@@ -23,13 +23,13 @@ describe('Loja.vue', () => {
     store = new Vuex.Store({
       actions,
       modules: {
-        carrinho
+        cart
       }
     })
   })
 
-  it('Componente Loja é uma instancia', () => {
-    const wrapper = shallowMount(Loja, { store, localVue })
+  it('Component StoreProduct is a instance', () => {
+    const wrapper = shallowMount(StoreProduct, { store, localVue })
     expect(wrapper.exists()).toBe(true)
   })
 })
